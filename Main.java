@@ -14,6 +14,7 @@ import static java.util.stream.Collectors.toList;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
+        //Se crea una sala de espera con 3 asientos.
         WaitingRoom waitingRoom = new WaitingRoom(3);
 
         ExecutorService executorService = Executors.newFixedThreadPool(100);
@@ -34,7 +35,7 @@ public class Main {
         }
         
         // Cuando todos los cleintes han sido afeitados el barbero se va a dormir
-        System.out.println("all customers have been shaved");
+        System.out.println("Todos los clientes han sido atendidos");
         executorService.shutdownNow();
         executorService.awaitTermination(1, MINUTES);
     }

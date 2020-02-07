@@ -4,7 +4,7 @@ public class barbero extends Thread {
 
 	private barberia laBarberia;
 
-	public barbero(barberia laBarberia) {
+	public barbero(barberia laBarberia) { //Se inicializa la variable laBarberia
 		this.laBarberia = laBarberia;
 	}
 

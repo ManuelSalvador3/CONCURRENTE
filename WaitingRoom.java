@@ -6,11 +6,12 @@ public class WaitingRoom {
 
     private final ArrayBlockingQueue<Customer> waitingCustomers; //Cola implementada mediante un array
 
-    public WaitingRoom(int capacity) { //Inicializamos los atributos
+    public WaitingRoom(int capacity) { //Se crea la cola (asientos de espera) de la barbería.
         waitingCustomers = new ArrayBlockingQueue<>(capacity);
     }
     
     // Funcion que hace que el cliente se siente en una silla a esperar.
+    // En caso de no tener sitio, waitingCustomers devuelve block así bloqueando el hilo.
     public void takeASeat(Customer customer) throws InterruptedException {
         waitingCustomers.put(customer);
     }

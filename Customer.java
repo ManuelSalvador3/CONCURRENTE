@@ -15,7 +15,7 @@ public class Customer implements Runnable {
 
     private volatile boolean shaved;
 
-    public Customer(WaitingRoom waitingRoom) {
+    public Customer(WaitingRoom waitingRoom) { // Inicializamos los atributos de la clase
         this.id = idGenerator.incrementAndGet();
         this.waitingRoom = waitingRoom;
         this.synchronousQueue = new SynchronousQueue<>();
@@ -24,25 +24,31 @@ public class Customer implements Runnable {
     @Override
     public void run() {
         try {
+            // El cliente se sienta a esperar
             waitingRoom.takeASeat(this);
 
             System.out.println("El cliente " + this + " está esperando a que le corten el pelo.");
-            waitToBeCalledAndShaved();
+            waitToBeCalledAndShaved(); // Espera a que le llamen para cortarse el pelo
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
+    
+    // Se llama al cliente y se le afeita, poniendo el atributo de shaved a true
     public void callAndShave() throws InterruptedException {
         synchronousQueue.put(true);
         shaved = true;
     }
 
+    // Funcion que implementa la espera que hace el cliente para que le llamen a cortarse 
+    // el pelo
     public void waitToBeCalledAndShaved() throws InterruptedException {
         synchronousQueue.take();
     }
-
+    
+    // Funcion que devuelve el valor del atributo shaved que puede ser true si se ha afeitado y 
+    // false si no
     public boolean isShaved() {
         return shaved;
     }

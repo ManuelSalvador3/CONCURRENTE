@@ -22,7 +22,7 @@ public class Main {
         executorService.submit(new Barber(waitingRoom));
         executorService.submit(new Barber(waitingRoom));
     
-        //Se crea un nuevo cliente y se añade a la lista 
+        //Se crea crean 100 clientes
         List<Customer> customers = Stream.generate(() -> new Customer(waitingRoom))
                                          .limit(100)
                                          .peek(executorService::submit)

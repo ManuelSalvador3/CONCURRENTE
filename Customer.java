@@ -16,6 +16,7 @@ public class Customer implements Runnable {
     private volatile boolean shaved;
 
     public Customer(WaitingRoom waitingRoom) { // Inicializamos los atributos de la clase
+        //El cliente se genera así mismo el siguiente id disponible.
         this.id = idGenerator.incrementAndGet();
         this.waitingRoom = waitingRoom;
         this.synchronousQueue = new SynchronousQueue<>();
@@ -24,7 +25,7 @@ public class Customer implements Runnable {
     @Override
     public void run() {
         try {
-            // El cliente se sienta a esperar
+            // El cliente se sienta a esperar. En caso de que no haya sitio se queda en estado "block".
             waitingRoom.takeASeat(this);
 
             System.out.println("El cliente " + this + " está esperando a que le corten el pelo.");

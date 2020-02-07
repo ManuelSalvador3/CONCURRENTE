@@ -2,11 +2,11 @@ package edu.distrital.log.main;
 
 public class cliente extends java.lang.Thread {
 
-	private barberia laBarberia;
-	private int clienteId;
-	private boolean cortePelo = false;
+	private barberia laBarberia; //Atributo que representa laBarberia
+	private int clienteId; //Atributo que representa el id del cliente
+	private boolean cortePelo = false; //Atributo que representa si el corte de pelo se ha realizado o no.
 
-	public cliente(barberia laBarberia, int clienteId) {
+	public cliente(barberia laBarberia, int clienteId) { //Inicializamos los atributos
 		this.laBarberia = laBarberia;
 		this.clienteId = clienteId;
 	}
